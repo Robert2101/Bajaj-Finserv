@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
@@ -86,7 +87,7 @@ app.post('/bfhl', (req, res) => {
 
         roots.forEach(root => {
             const { tree, depth } = buildTree(root);
-            hierarchies.push({ root, tree, depth });
+            hierarchies.push({ root, tree: { [root]: tree }, depth });
             total_trees++; 
 
             if (depth > max_depth) {
@@ -145,5 +146,5 @@ app.post('/bfhl', (req, res) => {
     }
 });
 
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`API running on port ${PORT}`));

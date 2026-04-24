@@ -22,7 +22,7 @@ export default function App() {
     }
 
     try {
-      const res = await fetch('http://localhost:5001/bfhl', {
+      const res = await fetch('https://bajaj-finserv-7npw.onrender.com/bfhl', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ data: parsedData })
