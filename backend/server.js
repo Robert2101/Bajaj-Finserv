@@ -6,6 +6,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Bajaj Finserv Health API is running",
+    endpoint: "/bfhl",
+    method: "POST"
+  });
+});
+
 app.post('/bfhl', (req, res) => { 
     try {
         const { data } = req.body;
